@@ -31,6 +31,7 @@ return {
 				"tailwindcss",
 				"lua_ls",
 				"emmet_ls",
+				"eslint",
 			},
 		})
 		mason_tool_installer.setup({

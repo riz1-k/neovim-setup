@@ -32,3 +32,10 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) 
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 keymap.set("n", "<C-`>", "<cmd>ToggleTerm direction=horizontal<CR>", { noremap = true, silent = true })
+
+keymap.set(
+	"n",
+	"<S-h>",
+	"<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal <cr>",
+	{ desc = "[P]Open telescope buffers" }
+)
