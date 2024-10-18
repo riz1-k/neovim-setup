@@ -1,41 +1,45 @@
 return {
 	{
-		"folke/tokyonight.nvim",
-		priority = 1000, -- make sure to load this before all the other start plugins
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000, -- make sure to load this before all other start plugins
 		config = function()
-			local bg = "#011628"
-			local bg_dark = "#011423"
-			local bg_highlight = "#143652"
-			local bg_search = "#0A64AC"
-			local bg_visual = "#275378"
-			local fg = "#CBE0F0"
-			local fg_dark = "#B4D0E9"
-			local fg_gutter = "#627E97"
-			local border = "#547998"
-
-			require("tokyonight").setup({
-				style = "night",
-				-- transparent = true,
-				on_colors = function(colors)
-					colors.bg = bg
-					colors.bg_dark = bg_dark
-					colors.bg_float = bg_dark
-					colors.bg_highlight = bg_highlight
-					colors.bg_popup = bg_dark
-					colors.bg_search = bg_search
-					colors.bg_sidebar = bg_dark
-					colors.bg_statusline = bg_dark
-					colors.bg_visual = bg_visual
-					colors.border = border
-					colors.fg = fg
-					colors.fg_dark = fg_dark
-					colors.fg_float = fg
-					colors.fg_gutter = fg_gutter
-					colors.fg_sidebar = fg_dark
+			require("catppuccin").setup({
+				flavour = "mocha", -- Set Catppuccin flavour to Mocha
+				background = {
+					light = "latte", -- Default background for light mode
+					dark = "mocha", -- Default background for dark mode
+				},
+				transparent_background = false, -- Set to true if you want no background
+				show_end_of_buffer = false, -- Hide the '~' at the end of buffers
+				term_colors = true, -- Enable terminal colors
+				styles = {
+					comments = { "italic" }, -- Italic comments
+					conditionals = { "italic" },
+					functions = {},
+					keywords = {},
+					strings = {},
+					variables = {},
+				},
+				color_overrides = {}, -- Override specific colors if necessary
+				custom_highlights = function(colors)
+					return {
+						-- Customize highlight groups with Catppuccin Mocha colors
+						Normal = { fg = colors.text, bg = colors.base },
+						Comment = { fg = colors.overlay0, style = { "italic" } },
+						CursorLine = { bg = colors.surface1 },
+						StatusLine = { fg = colors.text, bg = colors.mantle },
+					}
 				end,
+				integrations = {
+					cmp = true,
+					gitsigns = true,
+					nvimtree = true,
+					treesitter = true,
+				},
 			})
-			-- load the colorscheme here
-			vim.cmd([[colorscheme tokyonight]])
+			-- Load the colorscheme
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 }
