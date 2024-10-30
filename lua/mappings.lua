@@ -22,4 +22,12 @@ map({ "n", "v" }, "<leader>mp", function()
         timeout_ms = 1000,
       })
     end, { desc = "Format file or range (in visual mode)" })
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+-- alt+ (j or k) to move the selected line up or download
+map("v", "<A-k>", ":m '<-2<cr>gv=gv")
+map("v", "<A-j>", ":m '>+1<cr>gv=gv")
+
+-- leader + s + (- or \) to create a split horizontally or vertically
+map("n", "<leader>s-", ":split<cr>")
+map("n", "<leader>s\\", ":vsplit<cr>")
+

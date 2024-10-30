@@ -3,6 +3,9 @@ return {
   lazy = false,
 	enabled = true,
 	config = function()
-		require("supermaven-nvim").setup({})
+		require("supermaven-nvim").setup({
+      accept_suggestion = "<Tab>",
+      clear_suggestion = "<C-]>",
+    })
 	end,
 }
