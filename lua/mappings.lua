@@ -24,10 +24,13 @@ map({ "n", "v" }, "<leader>mp", function()
     end, { desc = "Format file or range (in visual mode)" })
 
 -- alt+ (j or k) to move the selected line up or download
-map("v", "<A-k>", ":m '<-2<cr>gv=gv")
-map("v", "<A-j>", ":m '>+1<cr>gv=gv")
+map({"n","v"}, "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move line down" })
+map({"n","v"}, "<A-k>", ":m '<-2<cr>gv=gv" , { desc = "Move line up" })
 
 -- leader + s + (- or \) to create a split horizontally or vertically
-map("n", "<leader>s-", ":split<cr>")
-map("n", "<leader>s\\", ":vsplit<cr>")
+map("n", "<leader>s-", ":split<cr>", { desc = "Split horizontally" })
+map("n", "<leader>s\\", ":vsplit<cr>", { desc = "Split vertically" })
 
+-- leader + d + (n or p) to navigate to next or previous diagnostics
+map("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
